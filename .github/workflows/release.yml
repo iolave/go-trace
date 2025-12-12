@@ -1,0 +1,38 @@
+name: Release
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get release notes from CHANGELOG
+        id: get_release_notes
+        run: |
+          set -x
+          TAG_VERSION=$(echo ${{ github.ref_name }} | sed 's/^v//')
+          NOTES=$(awk -v version="$TAG_VERSION" '
+            $0 ~ ("^## \\[v" version "\\]") { in_section=1; next }
+            in_section && /^## / { exit }
+            in_section { print }
+          ' CHANGELOG.md)
+          if [ -z "$NOTES" ]; then
+            echo "Error: Release notes for version $TAG_VERSION not found in CHANGELOG.md"
+            exit 1
+          fi
+          echo "NOTES<<EOF" >> $GITHUB_ENV
+          echo "$NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ env.NOTES }}
