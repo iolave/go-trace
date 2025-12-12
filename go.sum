@@ -1,0 +1,6 @@
+github.com/iancoleman/strcase v0.3.0 h1:nTXanmYxhfFAMjZL34Ov6gkzEsSJZ5DbhxWjvSASxEI=
+github.com/iancoleman/strcase v0.3.0/go.mod h1:iwCmte+B7n89clKwxIoIXy/HfoL7AsD47ZCWhYzw7ho=
+github.com/iolave/go-errors v1.0.0 h1:vf2qiJ7/pXlR6smI5pnTTXbvoaDru6SrBtkBYy+YGyY=
+github.com/iolave/go-errors v1.0.0/go.mod h1:USFxuTyz44cf93421UWhDtSzeqo8YlkQ2fjJwm7/5kU=
+github.com/theothertomelliott/acyclic v0.0.1 h1:MZ6AEpKS9owkvyNg2RKyD91eG0PVTmOTdE8lYOckWqg=
+github.com/theothertomelliott/acyclic v0.0.1/go.mod h1:Lf1fgDzzzm31NWJNN1fjs0b0ozYFgalZM/lxm2AK+68=
