@@ -35,7 +35,7 @@ func TestTrace_JSON(t *testing.T) {
 		expected := fmt.Sprintf(`{"%s":"%s"}`, k, v)
 
 		got, err := trace.MarshalJSON()
-		if err != nil {
+		if err == nil {
 			t.Fatalf("expected no error, got %v", err)
 		}
 
